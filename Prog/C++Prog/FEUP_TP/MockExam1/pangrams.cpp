@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ctype.h>
 
 bool pangram(const char s[], char m[]) {
     int alpha[26] = {0};
