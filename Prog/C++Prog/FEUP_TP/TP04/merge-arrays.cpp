@@ -3,7 +3,7 @@
 
 void merge_arrays(const int a[], int na, const int b[], int nb, int c[]) {
 
-  for (int i{0}, j{0}, k{0}; i < na + nb; i++) { //j will be associated with array a, k will be associated with array b
+  for (int i = 0, j = 0, k = 0; i < na + nb; i++) { //j will be associated with array a, k will be associated with array b
     if (k == nb && j != na) {
       c[i] = a[j];
       j++;
@@ -22,15 +22,4 @@ void merge_arrays(const int a[], int na, const int b[], int nb, int c[]) {
       k++;
     }
   }
-}
-
-int main(void) {
-  const int NA = 4, NB = 6;
-  int a[NA] = { 1, 2, 4, 7};
-  int b[NB] = { 0, 3, 5, 6, 8, 9};
-  int c[NA+NB];
-  merge_arrays(a, NA, b, NB, c);
-  print_array(c, NA+NB);
-  
-  return 0;
 }
