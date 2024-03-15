@@ -6,3 +6,6 @@
 /Prog/CProg/.vscode
 /Personal_Projects
 /CompArch/RARS
+.vscode/*
+!.vscode/launch.json
+/Tests
