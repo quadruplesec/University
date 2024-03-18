@@ -9,3 +9,5 @@
 .vscode/*
 !.vscode/launch.json
 /Tests
+.idea/*
+/.idea
