@@ -1,5 +1,3 @@
-#include <iostream>
-
 bool pangram(const char s[], char m[]) {
     int alpha[26] = {0};
     int i = 0, m_counter = 0;
