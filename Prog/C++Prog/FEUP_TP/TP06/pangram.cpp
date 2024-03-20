@@ -21,13 +21,3 @@ bool pangram(const std::string& s, std::string& m) {
 
     return is_pangram;
 }
-
-int main(void)
-{ 
-using namespace std;
-string s = "The quick brown fox jumps over the lazy dog";
-  string m = "";
-  bool r = pangram(s, m);
-  cout << '\"' << s << "\" "
-       << boolalpha << r << " \"" << m << "\"\n";
-       return 0;}
