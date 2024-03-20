@@ -22,11 +22,3 @@ void split(const string& s, vector<string>& v) {
         i = pos;
     }
 }
-
-int main()
-{ using namespace std;
-    string s = "C++ LEIC FCUP FEUP";
-  vector<string> v;
-  split(s, v);
-  print(v); 
-  return 0;}
