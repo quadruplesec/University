@@ -8,8 +8,3 @@ void normalise(std::vector<T> &v, const T &min, const T &max) {
         if (v[i] > max) {v[i] = max; continue;}
     }
 }
-
-int main(void) 
-{ using namespace std;
-    vector<double> v { -1.2, 2.2, -3.5, 4.3, 5.2 }; 
-  normalise(v, 0.5, 5.1); print(v); return 0;}
