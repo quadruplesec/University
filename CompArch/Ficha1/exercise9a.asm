@@ -1,34 +1,30 @@
-#NOT WORKING; IDK!!!!
-
 .data
-v1: .byte 12, 3, -2, 8, 1
-v2: .word 0, 0, 0, 0, 0
+byte_vector: .byte 12, -2, 4, 8, 10, 12
+word_vector: .word 0, 0, 0, 0, 0, 0
+vector_len: .word 6 
 
 .text
-	la a1, v1	#byte vector
-	la a2, v2	#word vector (empty)
-	li a3, 5	#counter
-	jal COPY
-	li a7, 10
-	ecall
+		la s0, byte_vector
+		la s1, word_vector
+		la t0, vector_len
+		lw t0, 0(t0)
+		addi sp, sp, -16
+		sw ra, 12(sp)
+		sw s0, 8(sp)
+		sw s1, 4(sp)
+		jal byte_move
+		li a7, 93
+		ecall
 
-COPY:	addi sp, sp, -16
-	sb a1, 12(sp)
-	sw a2, 8(sp)
-	sw a3, 4(sp)
-	
-LOOP:	beqz a3, END
-	lbu t0, 0(a0)
-	sw t0, 0(a1)
-	addi a1, a0, 1
-	addi a2, a1, 4
-	addi, a3, a2, -1
-	jal LOOP
-END:	mv a0, a2
-	lb a1, 12(sp)
-	lw a2, 8(sp)
-	lw a3, 4(sp)
-	addi sp, sp, 16
-	ret 	
-	
-	
+byte_move:	beqz t0, end
+		lbu t1, 0(s0)
+		add t1, t1, zero
+		sw t1, 0(s1)
+		addi, s0, s0, 1
+		addi s1, s1, 4
+		addi t0, t0, -1		
+		j byte_move
+end:		mv a0, s0
+		ret
+
+
