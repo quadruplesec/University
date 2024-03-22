@@ -5,7 +5,8 @@
 /Prog/C++Prog/.vscode
 /Prog/CProg/.vscode
 /Personal_Projects
-/CompArch/RARS
+/CompArch/RARS/
+CompArch/RARS/
 .vscode/*
 !.vscode/launch.json
 /Tests
