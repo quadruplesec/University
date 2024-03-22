@@ -4,7 +4,7 @@ test_word: .word 26 #00000000000000000000000000011010 in binary. Output should b
 .text
 		la s0, test_word
 		lw s0, 0(s0)
-		li t1, 0
+		li t1, 1
 		jal foo
 		li a7, 93
 		ecall
@@ -16,8 +16,7 @@ main_loop:	srli s0, s0, 1
 		beqz s0, end_loop
 		addi, t1, t1, 1
 		j main_loop
-end_loop:	li a0, 31
-		sub a0, a0, t1
+end_loop:	mv a0, t1
 		lw ra, 12(sp)
 		lw s0, 8(sp)
 		addi sp, sp, 16
