@@ -10,7 +10,7 @@ oneeighty: .double 180
 		la t0, x_value
 		jal func
 		li a7, 3
-		ecall				#print result of cos(x) function call
+		ecall				#print result of function call
 		li a7, 10
 		ecall				#exit
 		
