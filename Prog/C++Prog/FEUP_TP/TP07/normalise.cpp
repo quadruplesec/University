@@ -17,13 +17,11 @@ std::string str_toupper(const std::string str)
 
 void normalise(const std::string &input_fname, const std::string &output_fname)
 {
-
     /*    
     >Lines that contain only space characters should not be written to the output file;
     >Leading and trailing spaces in a line should be erased;
     >All characters should be uppercased.
     */
-
     std::ifstream in(input_fname);
     std::ofstream out(output_fname);
     std::string line;

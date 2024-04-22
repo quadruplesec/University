@@ -24,3 +24,5 @@ void maximum(const std::string &input_fname, const std::string &output_fname)
 
     out << "count=" << count << "/max=" << std::fixed << std::setprecision(3) << max << '\n';
 }
+
+
