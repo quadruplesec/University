@@ -1,5 +1,3 @@
-// ! INCOMPLETE, giving some SEGV. Not sure I'll do this one
-
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -16,37 +14,33 @@ void show_vector(const std::vector<std::vector<int>> &v) {
     cout << "}";
 }
 
-int filter_point(std::vector<std::vector<int>> &v, size_t x, size_t y, size_t n)
+void filter_surrounding(std::vector<std::vector<int>> &maxed_matrix, std::vector<std::vector<int>> &v, int row, int collumn, int n)
 {
-    std::vector<int> neighbourhood;
-
-    for (size_t row = x - n/2; row <= x + n/2; row++)
+    std::vector<int> surround;
+    for (int r = row - n/2; r <= row + n/2; r++)
     {
-        if (row < 0 || row >= v.size()) continue;
-
-        for (size_t collumn = y - n/2; collumn <= y + n/2; collumn++)
+        if (r < 0 || r > (int) v.size() - 1) continue;
+        for (int c = collumn - n/2; c <= collumn + n/2; c++)
         {
-            if (collumn < 0 || collumn >= v.size()) continue;
-
-            std::cout << v[row][collumn] << '\n';
-            neighbourhood.push_back(v[row][collumn]);
+            if (c < 0 || c > (int) v[0].size() - 1) continue;
+            surround.push_back(v[r][c]);
         }
     }
 
-    int max = neighbourhood[0];
-    for (int &i : neighbourhood)
+    int max = surround[0];
+    for (int i : surround)
     {
         if (i > max)
         {
             max = i;
         }
     }
-
-    return max;
+    maxed_matrix[row][collumn] = max;
 }
 
 bool max_filter(std::vector<std::vector<int>> &v, int n)
 {
+    // Validity check
     if (n % 2 == 0) return false;
     if (v.size() < (size_t) n) return false;
     for (std::vector<int> &t : v)
@@ -54,21 +48,16 @@ bool max_filter(std::vector<std::vector<int>> &v, int n)
         if (t.size() < (size_t) n) return false;
     }
 
+    std::vector<std::vector<int>> maxed_matrix = v;
 
+    // Matrix traverser
     for (size_t row = 0; row < v.size(); row++)
     {
-        for (size_t collumn = 0; collumn < v.size(); collumn++)
+        for (size_t collumn = 0; collumn < v[0].size(); collumn++)
         {
-            v[row][collumn] = filter_point(v, row, collumn, n);
+            filter_surrounding(maxed_matrix, v, row, collumn, n);
         }
     }
-
+    v = maxed_matrix;
     return true;
 }
-
-int main()
-{ using namespace std;
-    vector<vector<int>> v = { {1,2,3}, {4,5,6}, {7,8,9} };
-  bool b = max_filter(v, 3); cout << boolalpha << b;
-  show_vector(v); cout << endl; 
-  return 0;}
