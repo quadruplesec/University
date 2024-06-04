@@ -3,7 +3,6 @@
 #include <string>
 #include <climits>
 
-
 std::string cat_keys(std::list<std::map<std::string, unsigned>> lst)
 {
     unsigned min = UINT_MAX;
